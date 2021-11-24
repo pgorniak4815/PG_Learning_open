@@ -14,7 +14,7 @@ def performMath():
     if previous == 0:
         equation = input("Enter equation:\n")
     else:
-        equation = input(str(previous))
+        equation = input(str(previous)+"\n")
 
     if equation == 'quit':
         print("Goodbye, human")
