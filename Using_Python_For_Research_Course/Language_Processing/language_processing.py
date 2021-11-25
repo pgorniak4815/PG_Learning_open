@@ -65,6 +65,9 @@ def word_stats(word_counts):
 
 
 def summarize_text(language, text):
+    """
+    Take language of text and text. Return grouped frequencies of words.
+    """
     counted_text = count_words_fast(text)
 
     data = pd.DataFrame({
@@ -84,6 +87,8 @@ def summarize_text(language, text):
         "mean_word_length": data.groupby(by = "frequency")["length"].mean(),
         "num_words": data.groupby(by = "frequency").size()
     })
+
+    print(sub_data)
     
     return(sub_data)
 
@@ -102,7 +107,6 @@ book_titles = {
     'Portuguese': 
         {'shakespeare': ('Hamlet',)}}
 
-
 hamlets = pd.DataFrame(columns = ["language","text"])
 
 title_num = 1
@@ -114,6 +118,7 @@ for language in book_titles:
                 text = read_book(inputfile)
                 hamlets.loc[title_num] = language, text
                 title_num += 1
+#Reading texts from books to hamlets variable
 
 grouped_data = pd.DataFrame(columns = ["language", "frequency", "mean_word_length", "num_words"])
 
@@ -121,9 +126,11 @@ for i in range(hamlets.shape[0]):
     language, text = hamlets.iloc[i]
     sub_data = summarize_text(language, text)
     grouped_data = grouped_data.append(sub_data)
+#grouping extracted data
 
 colors = {"Portuguese": "green", "English": "blue", "German": "red"}
 markers = {"frequent": "o","infrequent": "s", "unique": "^"}
+
 for i in range(grouped_data.shape[0]):
     row = grouped_data.iloc[i]
     plt.plot(row.mean_word_length, row.num_words,
