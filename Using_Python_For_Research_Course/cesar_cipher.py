@@ -1,5 +1,11 @@
+"""
+Ex. 1 Hw. 3 from "Using Python for Research" course.
 
+The task is to build a function to encode message by Cesar 
+cipher. 
+"""
 import string
+
 
 def encoding(message, key=0):
     """
@@ -11,7 +17,7 @@ def encoding(message, key=0):
     positions = {}
     n = 0
     for item in alphabet:
-        positions.update({item:n})
+        positions.update({item: n})
         n += 1
 
     encoding_list = []
