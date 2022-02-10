@@ -1,7 +1,6 @@
-from gzip import READ
+
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy.stats as st
 import math
 
 def FD_bins_n(x):
