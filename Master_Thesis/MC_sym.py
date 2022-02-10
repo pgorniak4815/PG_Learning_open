@@ -1,35 +1,68 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from math import exp
+import math 
 import random
 import time
 
-random.seed(time.get_clock_info)
+def FD_bins_n(x):
+    """returns the number of histogram bins for x dataset according to the Freedman-Diacons rule"""
+    median = np.median(x)
+
+    Q1 = x[x<median]
+    Q3 = x[x>median]
+
+    q1 = np.median(Q1)
+    q3 = np.median(Q3)
+
+    iqr = q3 - q1
+
+    #histogram bins width according Freedmen Diacons rule
+    bin_width = 2 * iqr * (len(x) ** (-1/3))
+
+    #calculating number of bins with rounding
+    bins = round((x.max() - x.min()) / bin_width)
+
+    return bins
+
+def Rice_bins_n(x):
+    """returns the number of histogram bins for x dataset according to the Riece rule"""
+    n = len(x)
+    bins = math.ceil(2*n**(1/3))
+
+    return bins
+
+start = time.perf_counter_ns()
+
+random.seed(100)
 number = 1000000;
 emissions = np.array([]);
 
-time_of_integration = 10000;
+time_of_integration = 1000000;
 
-for i in range(number):
+tau = 20
+
+for i in range(number-1):
     for s in range(time_of_integration):
-        chance = random.randrange(0,11)
-        if chance == 1:
+
+        lamb = 1/tau
+        chance = random.uniform(0,1)
+        if chance <= lamb:
             emissions = np.append(emissions, s)
             break;
 
-print(emissions)
-
-q25, q75 = np.percentile(emissions, [25, 75])
-bin_width = 2 * (q75 - q25) * len(emissions) ** (-1/3)
-bins = round((emissions.max() - emissions.min()) / bin_width)
+bins = Rice_bins_n(emissions)
 
 plt.hist(emissions, density=True, bins=bins)
-mn, mx = plt.xlim()
-plt.xlim(mn, mx)
-kde_xs = np.linspace(mn, mx, 100)
 
 plt.legend(loc="upper left")
 plt.ylabel("Int.")
 plt.xlabel("Time")
+end = time.perf_counter_ns()
+
+print((end - start)*10**(-9))
 
 plt.show()
+
+
+
+
