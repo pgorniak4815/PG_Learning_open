@@ -44,7 +44,7 @@ tau = 20
 for i in range(number-1):
     for s in range(time_of_integration):
 
-        lamb = 1/tau
+        lamb = (1/tau)*s
         chance = random.uniform(0,1)
         if chance <= lamb:
             emissions = np.append(emissions, s)
@@ -52,11 +52,10 @@ for i in range(number-1):
 
 bins = Rice_bins_n(emissions)
 
-plt.hist(emissions, density=True, bins=bins)
+plt.hist(emissions, density=False, bins=50)
 
-plt.legend(loc="upper left")
 plt.ylabel("Int.")
-plt.xlabel("Time")
+plt.xlabel("Time [ns] ")
 end = time.perf_counter_ns()
 
 print((end - start)*10**(-9))
