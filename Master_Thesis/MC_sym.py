@@ -34,7 +34,7 @@ def Rice_bins_n(x):
 start = time.perf_counter_ns()
 
 random.seed(100)
-number = 1000000;
+number = 100000;
 emissions = np.array([]);
 
 time_of_integration = 1000000;
