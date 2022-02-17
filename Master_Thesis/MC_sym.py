@@ -37,9 +37,9 @@ random.seed(100)
 number = 100000;
 emissions = np.array([]);
 
-time_of_integration = 1000000;
+time_of_integration = 100;
 
-tau = 20
+tau = 200
 
 for i in range(number-1):
     for s in range(time_of_integration):
@@ -50,12 +50,18 @@ for i in range(number-1):
             emissions = np.append(emissions, s)
             break;
 
-bins = Rice_bins_n(emissions)
 
-plt.hist(emissions, density=False, bins=50)
+print(np.sort(emissions))
+
+bins = FD_bins_n(emissions)
+
+print(bins)
+
+plt.hist(emissions, bins=10, rwidth=0.8, log = True, align='right', edgecolor='black')
 
 plt.ylabel("Int.")
 plt.xlabel("Time [ns] ")
+plt.draw()
 end = time.perf_counter_ns()
 
 print((end - start)*10**(-9))

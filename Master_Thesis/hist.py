@@ -40,7 +40,8 @@ b1 = FD_bins_n(x)
 b2 = Rice_bins_n(x)
 
 #building a histogram from prepared data
-plt.hist(x, bins=b1)
+plt.hist(x, bins=b1, density=True)
+plt.plot()
 
 plt.ylabel("Counts")
 plt.xlabel("Values")
