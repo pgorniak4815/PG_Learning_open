@@ -24,7 +24,19 @@ def binning(x, size = 10**(-9)):
     return binned_data;
 
 
+random.seed(100)
+number = 100000;
+emissions = np.array([]);
 
+tau = 200
+
+for i in range(number-1):
+    
+    t = -tau*math.log(random.uniform(0,1))
+    emissions = np.append(emissions, t)
+
+
+print(emissions)
 
 
 
