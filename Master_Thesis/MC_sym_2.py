@@ -1,3 +1,4 @@
+from cProfile import label
 from ctypes import sizeof
 import numpy as np
 import matplotlib.pyplot as plt
@@ -34,30 +35,39 @@ for i in range(number-1):
     t = -tau*math.log(random.uniform(0,1))
     emissions.append(t);
 
+
+
 x = emissions;
+
 size = 10;
 number_of_bins = round((max(x)-min(x))/size) + 1;
 
-bins = [i for i in range(0,number_of_bins)]
-bins = bins*size;
+bins = [i*size for i in range(0,number_of_bins)];
 
-bins_label = [(i+size)/2 for i in bins];
+bins_label = [i+(size)/2 for i in bins];
 
 values = [0]*len(bins_label)
 
-binned_data = dict(zip(x,values));
+binned_data = dict(zip(bins_label,values));
+
 
 n=0;
 
 for item in x:
     for lim in bins:
-            if item >= lim:
-                binned_data[bins_label[n]] =+ 1;
+        if item <= lim:
+            binned_data[bins_label[n]]+=1;
+            break
+        n+=1;
+    n=0;    
 
-print(len(binned_data))
+EM = binned_data.items()
+EM = sorted(EM) 
+x, y = zip(*EM)
 
-#plt.plot(emissions_times);
-#plt.show
+plt.plot(x,y,'ro')
+plt.savefig("mygraph.png")
+
 
 
 
