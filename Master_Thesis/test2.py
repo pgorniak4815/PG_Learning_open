@@ -1,3 +1,6 @@
+"""
+Another version of the program for generating and processing blinking data.
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -92,4 +95,3 @@ plt.show()
 
 np.savetxt('data\estimation_x.csv', a_x[0], delimiter = ',')
 np.savetxt('data\estimation_alfa.csv', a_x[1], delimiter = ',')
-
