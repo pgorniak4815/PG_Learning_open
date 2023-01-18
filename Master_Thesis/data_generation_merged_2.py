@@ -1,3 +1,7 @@
+"""
+Second attempt at data generation and partitioning
+""""
+
 import numpy as np
 
 number = 10000000
@@ -35,7 +39,3 @@ print("Number of points in tail part: " + str(len(emissions_tail))
       + " (" + str(len(emissions_tail)*100/number) + "%)")
 
 np.savetxt('data\emissions.csv', emissions, delimiter = ',')
-
-
-
-
