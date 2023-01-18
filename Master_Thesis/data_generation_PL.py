@@ -1,3 +1,7 @@
+"""
+Attempt to divide data into core and tail.
+"""
+
 import numpy as np
 
 number = 1000000
@@ -25,7 +29,3 @@ print("Number of points in tail part: " + str(len(emissions_tail))
 
 np.savetxt('data\emissions_times_power_law_core.csv', emissions_core, delimiter = ',')
 np.savetxt('data\emissions_times_power_law_tail.csv', emissions_tail, delimiter = ',')
-
-
-
-
