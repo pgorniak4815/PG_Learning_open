@@ -1,3 +1,7 @@
+"""
+Visualization of emissions data.
+"""
+
 import matplotlib.pyplot as plt
 import my_functions as mf
 import numpy as np
