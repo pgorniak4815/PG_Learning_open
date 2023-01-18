@@ -1,8 +1,12 @@
+"""
+The final program for generating emission data from exponential and power distribution, data processing, binning and visualization. 
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import math
 from scipy import optimize as opt
 
+#Setting the initial physical parameters
 number = 100000000
 border = 100000
 
@@ -11,6 +15,7 @@ xmin = 0.1
 tau_exp = 15
 tau_trap = 100
 
+#Generating data from exponential and power distributions
 rand_sample_exp = np.random.uniform(size=number)
 rand_sample_trap = np.random.uniform(size=number)
 
@@ -60,7 +65,7 @@ emissions = np.concatenate([emissions_exp, emissions_exp_t1, emissions_exp_t2])
 
 
 
-#tail cutting
+#Tail cutting
 emissions_core = emissions[emissions<=border]
 emissions_tail = emissions[emissions>border]
 
@@ -69,7 +74,7 @@ emissions_core_t2 = emissions_exp_t2[emissions_exp_t2<=border]
 
 len(emissions_core_t2)
 
-#printing results
+#Printing results
 print("Border of core part is: " + str(border/1000) + " µs\n") 
 
 print("Number of points in core part: " + str(len(emissions_core)) 
@@ -109,7 +114,7 @@ binned_t2_emissions = binning2(emissions_core_t2, 0.1)
 
 
 
-
+#Data visualization
 plt.plot(x_c, y_c, 'green', alpha = 0.7)
 plt.yscale('log')
 plt.xscale('log')
@@ -155,6 +160,7 @@ to_check[np.where(to_check == 0)] = 0.000001
 
 (binned_exp_emissions_x, binned_exp_emissions_y) = binned_exp_emissions
 
+#Data saving
 np.savetxt('data\emissions_core_x.csv', x_c, delimiter = ',')
 np.savetxt('data\emissions_core_y.csv', y_c, delimiter = ',')
 
@@ -174,6 +180,7 @@ x_test = np.linspace(int(to_check[0][0]), (x_n + int(to_check[0][0]))*10, x_n)
 
 a = np.zeros(len(x_test))
 
+#Calculation of desired parameters
 def Likehood(hist, bmin):
     
     def ES(*arg):
@@ -225,16 +232,3 @@ plt.show()
 
 np.savetxt('data\estimation_x.csv', a_x[0], delimiter = ',')
 np.savetxt('data\estimation_alfa.csv', a_x[1], delimiter = ',')
-
-
-
-
-
-
-
-
-
-
-
-
-
