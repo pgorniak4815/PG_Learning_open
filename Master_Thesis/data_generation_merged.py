@@ -1,3 +1,7 @@
+"""
+The first version of the combined generation, segmenting and saving.
+"""
+
 import numpy as np
 
 number = 100000000
@@ -75,6 +79,3 @@ np.savetxt('data\emissions.csv', emissions, delimiter = ',')
 np.savetxt('data\emissions_times_exp.csv', emissions_exp, delimiter = ',')
 np.savetxt('data\emissions_times_power_law_core.csv', emissions_core, delimiter = ',')
 np.savetxt('data\emissions_times_power_law_tail.csv', emissions_tail, delimiter = ',')
-
-
-
