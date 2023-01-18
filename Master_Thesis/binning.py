@@ -18,3 +18,15 @@ def binning(x, size = 10):
             n+=1
 
     return(binned_data)
+
+import numpy as np
+
+emissions = np.loadtxt('data\emissions.csv',
+                 delimiter=",", dtype=float)
+
+binned_emissions = binning(emissions,0.1)
+EM = binned_emissions.items()
+EM = sorted(EM) 
+x, y = zip(*EM)
+
+np.savetxt('data\emissions_binned.csv', (x,y), delimiter = ',')
