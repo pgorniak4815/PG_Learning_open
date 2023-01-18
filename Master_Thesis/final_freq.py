@@ -8,6 +8,7 @@ import math
 
 times = np.loadtxt('blinking_time.csv')
 
+#Setting the experiment duration
 time_interval = 1*10**3
 duration = times.sum()
 
@@ -21,6 +22,7 @@ times_c = times
 sum_time = 0
 j = 0
 
+#Counting emissions in time intervals
 for i in range(0, n):
     
     c = 0
@@ -53,6 +55,7 @@ i = 0
 on = []
 off = []
 
+#Classification of intervals as on or off
 while 1 == 1:
     
     n = 0
@@ -77,6 +80,7 @@ while 1 == 1:
 off_np = np.array(off)
 on_np = np.array(on)
 
+#Binning of received data
 def binning2(x, size = 0.1):   
     number_of_bins = math.ceil(max(x)/size) + 1
 
@@ -89,6 +93,7 @@ def binning2(x, size = 0.1):
 b_off = binning2(off_np, time_interval)
 b_on = binning2(on_np, time_interval)
 
+#Data visualization
 (box, boy) = b_on
 (bofx, bofy) = b_off
 
@@ -109,6 +114,7 @@ y_b_on = b_on[1]
 x_b_off = b_off[0]
 y_b_off = b_off[1]
 
+#Saving the results
 np.savetxt('x_on_blink_time.csv', x_b_on, delimiter = ',')
 np.savetxt('y_on_blink_time.csv', y_b_on, delimiter = ',')
 np.savetxt('x_off_blink_time.csv', x_b_off, delimiter = ',')
