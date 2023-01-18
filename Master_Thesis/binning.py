@@ -1,3 +1,7 @@
+"""
+Selfmade binning function. Very early version.
+"""
+
 def binning(x, size = 10):   
     number_of_bins = round((max(x)-min(x))/size) + 1
 
@@ -19,6 +23,7 @@ def binning(x, size = 10):
 
     return(binned_data)
 
+#Test on emissions data. Data transformation and saving to a format convenient for visualization.
 import numpy as np
 
 emissions = np.loadtxt('data\emissions.csv',
