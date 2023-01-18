@@ -1,3 +1,6 @@
+"""
+Visualization of emission data from power law distribution.
+"""
 import matplotlib.pyplot as plt
 import my_functions as mf
 import numpy as np
