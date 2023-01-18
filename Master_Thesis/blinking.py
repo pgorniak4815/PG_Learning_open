@@ -1,3 +1,7 @@
+"""
+Generator of data describing the blinking phenomenon of colloidal quantum dots.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -9,10 +13,15 @@ duration = 0
 expected_duration = 1*10**9
 excited = True
 
+#alfa coeficient
 alfa = 1.6
+#resolution of experiment
 xmin = 0.1
+#mean time to relaxation
 tau_exp = 15
+#mean time to excitation
 tau_boost = 15
+#mean time to getting trapped
 tau_trap = 100
 
 
@@ -76,31 +85,4 @@ while duration < expected_duration:
     print(duration*100/expected_duration)
 
 np.savetxt('blinking_time.csv', times, delimiter = ',')
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
