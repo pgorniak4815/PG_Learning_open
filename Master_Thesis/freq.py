@@ -1,3 +1,7 @@
+"""
+Program for the second part of the master's thesis, is used to count the intervals in which
+there are frequent immissions and those in which they do not occur.
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -109,15 +113,3 @@ np.savetxt('x_on_blink_time.csv', x_b_on, delimiter = ',')
 np.savetxt('y_on_blink_time.csv', y_b_on, delimiter = ',')
 np.savetxt('x_off_blink_time.csv', x_b_off, delimiter = ',')
 np.savetxt('y_off_blink_time.csv', y_b_off, delimiter = ',')
-
-
-
-
-
-
-
-
-
-
-
-
