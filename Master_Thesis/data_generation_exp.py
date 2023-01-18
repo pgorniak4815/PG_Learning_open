@@ -1,3 +1,6 @@
+"""
+Very simple attempt to generate exponential distribution
+"""
 import numpy as np
 
 number = 1000000
