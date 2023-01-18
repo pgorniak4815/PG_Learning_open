@@ -1,3 +1,7 @@
+"""
+Visualization of binned emissions data 
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 
